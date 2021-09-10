@@ -17,6 +17,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 # A pure ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.
 gem 'jwt', '~> 2.2', '>= 2.2.3'
+# Object oriented authorization for Rails applications
+gem 'pundit', '~> 2.1', '>= 2.1.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

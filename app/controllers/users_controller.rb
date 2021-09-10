@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    authorize @users
   end
 
   # GET /users/1
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    authorize User
     @user = User.new(user_params)
 
     if @user.save
@@ -44,10 +46,11 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+      authorize @user
     end
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :email, :password_digest)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation, :admin)
     end
 end
