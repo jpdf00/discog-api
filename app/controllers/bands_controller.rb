@@ -5,7 +5,7 @@ class BandsController < ApplicationController
   # GET /bands.json
   def index
     @bands = Band.all
-    autorize @bands
+    authorize @bands
   end
 
   # GET /bands/1
@@ -17,7 +17,7 @@ class BandsController < ApplicationController
   # POST /bands.json
   def create
     @band = Band.new(band_params)
-    autorize @band
+    authorize @band
 
     if @band.save
       render :show, status: :created, location: @band
@@ -46,7 +46,7 @@ class BandsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_band
       @band = Band.find(params[:id])
-      autorize @band
+      authorize @band
     end
 
     # Only allow a list of trusted parameters through.

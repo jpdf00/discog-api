@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :albums
-  resources :bands
+  resources :bands do
+    resources :albums
+  end
   resources :types
   resources :statuses
   resources :genres
