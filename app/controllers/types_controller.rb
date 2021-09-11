@@ -5,6 +5,7 @@ class TypesController < ApplicationController
   # GET /types.json
   def index
     @types = Type.all
+    autorize @types
   end
 
   # GET /types/1
@@ -16,6 +17,7 @@ class TypesController < ApplicationController
   # POST /types.json
   def create
     @type = Type.new(type_params)
+    autorize @type
 
     if @type.save
       render :show, status: :created, location: @type
@@ -44,6 +46,7 @@ class TypesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_type
       @type = Type.find(params[:id])
+      autorize @type
     end
 
     # Only allow a list of trusted parameters through.

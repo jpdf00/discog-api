@@ -5,6 +5,7 @@ class GenresController < ApplicationController
   # GET /genres.json
   def index
     @genres = Genre.all
+    autorize @genres
   end
 
   # GET /genres/1
@@ -16,6 +17,7 @@ class GenresController < ApplicationController
   # POST /genres.json
   def create
     @genre = Genre.new(genre_params)
+    autorize @genre
 
     if @genre.save
       render :show, status: :created, location: @genre
@@ -44,6 +46,7 @@ class GenresController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_genre
       @genre = Genre.find(params[:id])
+      autorize @genre
     end
 
     # Only allow a list of trusted parameters through.

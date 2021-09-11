@@ -5,6 +5,7 @@ class StatusesController < ApplicationController
   # GET /statuses.json
   def index
     @statuses = Status.all
+    autorize @statuses
   end
 
   # GET /statuses/1
@@ -16,6 +17,7 @@ class StatusesController < ApplicationController
   # POST /statuses.json
   def create
     @status = Status.new(status_params)
+    autorize @status
 
     if @status.save
       render :show, status: :created, location: @status
@@ -44,6 +46,7 @@ class StatusesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_status
       @status = Status.find(params[:id])
+      autorize @status
     end
 
     # Only allow a list of trusted parameters through.
