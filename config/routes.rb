@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :statuses
   resources :genres
   resources :users
   post :login, to: "login#create"
