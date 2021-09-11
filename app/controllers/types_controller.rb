@@ -4,7 +4,7 @@ class TypesController < ApplicationController
   # GET /types
   # GET /types.json
   def index
-    @types = Type.all
+    @types = Type.all.order_by_name
     authorize @types
   end
 
