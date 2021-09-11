@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_11_152421) do
+ActiveRecord::Schema.define(version: 2021_09_11_152828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bands", force: :cascade do |t|
+    t.string "name"
+    t.bigint "genre_id", null: false
+    t.bigint "status_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_bands_on_genre_id"
+    t.index ["status_id"], name: "index_bands_on_status_id"
+    t.index ["user_id"], name: "index_bands_on_user_id"
+  end
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -43,4 +55,7 @@ ActiveRecord::Schema.define(version: 2021_09_11_152421) do
     t.string "avatar"
   end
 
+  add_foreign_key "bands", "genres"
+  add_foreign_key "bands", "statuses"
+  add_foreign_key "bands", "users"
 end
