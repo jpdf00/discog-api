@@ -6,11 +6,13 @@ class AlbumsController < ApplicationController
   def index
     @albums = Album.all
     authorize @albums
+    render json: @albums, status: :ok
   end
 
   # GET /albums/1
   # GET /albums/1.json
   def show
+    render json: @album, status: :ok
   end
 
   # POST /albums

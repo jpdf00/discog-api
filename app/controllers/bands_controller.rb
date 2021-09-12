@@ -6,11 +6,13 @@ class BandsController < ApplicationController
   def index
     @bands = Band.all
     authorize @bands
+    render json: @bands, status: :ok
   end
 
   # GET /bands/1
   # GET /bands/1.json
   def show
+    render json: @band, status: :ok
   end
 
   # POST /bands
