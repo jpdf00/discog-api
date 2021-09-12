@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    @albums = Album.all.includes(:band, :type)
     authorize @albums
     render json: @albums, status: :ok
   end
