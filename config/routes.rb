@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :bands do
+    resources :albums
+  end
+  resources :types
+  resources :statuses
+  resources :genres
   resources :users
   post :login, to: "login#create"
 
