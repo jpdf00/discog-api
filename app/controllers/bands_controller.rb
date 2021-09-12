@@ -22,7 +22,7 @@ class BandsController < ApplicationController
     authorize @band
 
     if @band.save
-      render :show, status: :created, location: @band
+      render json: @band, status: :created
     else
       render json: @band.errors, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class BandsController < ApplicationController
   # PATCH/PUT /bands/1.json
   def update
     if @band.update(band_params)
-      render :show, status: :ok, location: @band
+      render json: @band, status: :ok
     else
       render json: @band.errors, status: :unprocessable_entity
     end
