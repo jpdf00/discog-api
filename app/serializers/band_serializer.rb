@@ -10,27 +10,29 @@ class BandSerializer < ActiveModel::Serializer
   end
 
   def sum_songs
-    Album.where({ band_id: @object.id }).sum(:qtd_songs)
+    @object.albums.map{|i| i.qtd_songs }.sum
+    # Album.where({ band_id: @object.id }).sum(:qtd_songs)
   end
 
   def sum_size
-    Album.where({ band_id: @object.id }).sum(:size)
+    @object.albums.map{|i| i.size }.sum
+    # Album.where({ band_id: @object.id }).sum(:size)
   end
 
   def songs_per_album
-    return 0 if count_albums == 0
+    return 0 if count_albums.zero?
 
-    (sum_songs / count_albums).floor(2)
+    (sum_songs.to_f / count_albums.to_f).floor(2)
   end
 
   def size_per_album
-    return 0 if count_albums == 0
+    return 0 if count_albums.zero?
 
     (sum_size / count_albums).floor(2)
   end
 
   def size_per_song
-    return 0 if sum_songs == 0
+    return 0 if sum_songs.zero?
 
     (sum_size / sum_songs).floor(2)
   end
