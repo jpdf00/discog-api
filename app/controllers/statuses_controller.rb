@@ -6,11 +6,13 @@ class StatusesController < ApplicationController
   def index
     @statuses = Status.all.order_by_id
     authorize @statuses
+    render json: @statuses, status: :ok
   end
 
   # GET /statuses/1
   # GET /statuses/1.json
   def show
+    render json: @status, status: :ok
   end
 
   # POST /statuses
@@ -20,7 +22,7 @@ class StatusesController < ApplicationController
     authorize @status
 
     if @status.save
-      render :show, status: :created, location: @status
+      render json: @status, status: :created
     else
       render json: @status.errors, status: :unprocessable_entity
     end
@@ -30,7 +32,7 @@ class StatusesController < ApplicationController
   # PATCH/PUT /statuses/1.json
   def update
     if @status.update(status_params)
-      render :show, status: :ok, location: @status
+      render json: @status, status: :ok
     else
       render json: @status.errors, status: :unprocessable_entity
     end

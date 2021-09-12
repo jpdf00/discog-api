@@ -22,7 +22,7 @@ class TypesController < ApplicationController
     authorize @type
 
     if @type.save
-      render :show, status: :created, location: @type
+      render json: @type, status: :created
     else
       render json: @type.errors, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class TypesController < ApplicationController
   # PATCH/PUT /types/1.json
   def update
     if @type.update(type_params)
-      render :show, status: :ok, location: @type
+      render json: @type, status: :ok
     else
       render json: @type.errors, status: :unprocessable_entity
     end
