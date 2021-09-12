@@ -1,7 +1,6 @@
 class AlbumSerializer < ActiveModel::Serializer
   attributes :id, :name, :year, :qtd_songs, :size, :size_per_song, :cover
 
-  belongs_to :band
   belongs_to :type
 
   def size_per_song

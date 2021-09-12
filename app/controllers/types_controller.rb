@@ -6,11 +6,13 @@ class TypesController < ApplicationController
   def index
     @types = Type.all.order_by_name
     authorize @types
+    render json: @types, status: :ok
   end
 
   # GET /types/1
   # GET /types/1.json
   def show
+    render json: @type, status: :ok
   end
 
   # POST /types
