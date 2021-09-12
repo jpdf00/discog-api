@@ -4,13 +4,15 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.all.order_by_id
     authorize @users
+    render json: @users, status: :ok
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    render json: @user, status: :ok
   end
 
   # POST /users
