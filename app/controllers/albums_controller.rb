@@ -20,7 +20,7 @@ class AlbumsController < ApplicationController
     authorize @album
 
     if @album.save
-      render :show, status: :created, location: @album
+      render json: @album, status: :created
     else
       render json: @album.errors, status: :unprocessable_entity
     end
@@ -30,7 +30,7 @@ class AlbumsController < ApplicationController
   # PATCH/PUT /albums/1.json
   def update
     if @album.update(album_params)
-      render :show, status: :ok, location: @album
+      render json: @album, status: :ok
     else
       render json: @album.errors, status: :unprocessable_entity
     end

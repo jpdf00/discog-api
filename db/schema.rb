@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_11_154554) do
+ActiveRecord::Schema.define(version: 2021_09_11_232319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_09_11_154554) do
     t.string "name"
     t.integer "year"
     t.integer "qtd_songs"
-    t.integer "size"
+    t.decimal "size"
     t.string "cover"
     t.bigint "band_id", null: false
     t.bigint "type_id", null: false
