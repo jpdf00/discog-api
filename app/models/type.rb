@@ -1,3 +1,3 @@
 class Type < ApplicationRecord
-  has_many :albuns
+  has_many :albums
 end

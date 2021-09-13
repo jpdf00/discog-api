@@ -6,11 +6,13 @@ class GenresController < ApplicationController
   def index
     @genres = Genre.all
     authorize @genres
+    render json: @genres, status: :ok
   end
 
   # GET /genres/1
   # GET /genres/1.json
   def show
+    render json: @genre, status: :ok
   end
 
   # POST /genres
@@ -20,7 +22,7 @@ class GenresController < ApplicationController
     authorize @genre
 
     if @genre.save
-      render :show, status: :created, location: @genre
+      render json: @genre, status: :created
     else
       render json: @genre.errors, status: :unprocessable_entity
     end
@@ -30,7 +32,7 @@ class GenresController < ApplicationController
   # PATCH/PUT /genres/1.json
   def update
     if @genre.update(genre_params)
-      render :show, status: :ok, location: @genre
+      render json: @genre, status: :ok
     else
       render json: @genre.errors, status: :unprocessable_entity
     end

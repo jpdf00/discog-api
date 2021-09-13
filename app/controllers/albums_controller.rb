@@ -4,13 +4,15 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    @albums = Album.where({ band_id: params[:band_id] }).includes(:band, :type)
     authorize @albums
+    render json: @albums, status: :ok
   end
 
   # GET /albums/1
   # GET /albums/1.json
   def show
+    render json: @album, status: :ok
   end
 
   # POST /albums
